@@ -1,0 +1,46 @@
+import * as React from "react";
+import {
+  SimpleForm,
+  Create,
+  ReferenceArrayInput,
+  BooleanInput,
+  CheckboxGroupInput,
+  useTranslate,
+} from "react-admin";
+
+import { PasswordInput, TextInput } from "../../components/Inputs";
+
+import Grid from "@mui/material/Grid";
+
+export const UserCreate = (props) => {
+  const translate = useTranslate();
+  return (
+    <>
+      <h2>{translate("resources.users.create")}</h2>
+      <Create {...props} redirect="list">
+        <SimpleForm>
+          <Grid container spacing={2}>
+            <Grid item md={6}>
+              <TextInput source="username" />
+            </Grid>
+            <Grid item md={6}>
+              <PasswordInput source="password" />
+            </Grid>
+            <Grid item md={6}>
+              <TextInput source="name" />
+            </Grid>
+
+            <Grid item md={6}>
+              <TextInput source="email" />
+            </Grid>
+
+            <Grid item md={6}>
+              <TextInput source="phone" />
+              <BooleanInput source="phoneConfirmed" />
+            </Grid>
+          </Grid>
+        </SimpleForm>
+      </Create>
+    </>
+  );
+};
